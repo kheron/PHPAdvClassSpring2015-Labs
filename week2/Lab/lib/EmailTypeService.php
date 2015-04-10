@@ -9,7 +9,7 @@
 /**
  * Description of EmailTypeService
  *
- * @Korey Heron
+ * @author User
  */
 class EmailTypeService {
    
@@ -69,6 +69,7 @@ class EmailTypeService {
        
         foreach ($this->_errors as $value) {
             echo '<p>',$value,'</p>';
+            
         }
          
     }
@@ -84,12 +85,21 @@ class EmailTypeService {
 
         if ($stmt->execute() && $stmt->rowCount() > 0) {
             
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+           $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+           echo "<table border='1'>";
+           echo "<tr><th>Email ID</th><th>Email Type</th><th>IsActive</th><th>Delete Entry</th></tr>";
            
             foreach ($results as $value) {
-                echo '<p>', $value['emailtype'], '</p>';
+                 
+                echo "<tr><td>", $value['emailtype'], "</td>", 
+                     "<td>", $value['emailtypeid'], "</td>",
+                     "<td>", $value['active'], "</td>",
+                     "<td> <a href='?deleteid=",$value['emailtypeid'], "'> Delete</a></td></tr>";
             }
-        } else {
+            echo "</table>";    
+        } 
+        else {
+            
             echo '<p>No Data</p>';
         }
         

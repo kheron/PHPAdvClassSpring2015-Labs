@@ -3,7 +3,7 @@
 /**
  * Description of EmailModel
  *
- * @author KHERON
+ * @author Korey Heron
  */
 class EmailModel {
     
