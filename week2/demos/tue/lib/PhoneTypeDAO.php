@@ -62,8 +62,7 @@ class PhoneTypeDAO implements IDAO {
          $values = array( ":phonetype" => $model->getPhonetype(),
                           ":active" => $model->getActive()
                     );
-         
-                
+   
          if ( $this->idExisit($model->getPhonetypeid()) ) {
              $values[":phonetypeid"] = $model->getPhonetypeid();
              $stmt = $db->prepare("UPDATE phonetype SET phonetype = :phonetype, active = :active WHERE phonetypeid = :phonetypeid");

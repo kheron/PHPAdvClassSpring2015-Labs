@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 /**
  * DB is the general class to connection to our database

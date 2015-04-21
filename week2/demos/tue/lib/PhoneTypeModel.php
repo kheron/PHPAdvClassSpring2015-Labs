@@ -31,11 +31,7 @@ class PhoneTypeModel implements IModel {
     }
 
     function setPhonetypeid($phonetypeid) {
-        if (is_integer($phonetypeid) ) {
-            $this->phonetypeid = $phonetypeid;
-        } else {
-            
-        }
+        $this->phonetypeid = $phonetypeid;        
     }
 
     function setPhonetype($phonetype) {

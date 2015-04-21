@@ -42,7 +42,7 @@ class EmailTypeService {
         } else {
             
             if (  $this->_EmailTypeDAO->save($this->_EmailTypeModel) ) {
-                echo 'Email Added';
+                echo 'Email Added/Updated';
             } else {
                 echo 'Email could not be added Added';
             }
@@ -81,27 +81,26 @@ class EmailTypeService {
 
     public function displayEmails() {        
        
-        $stmt = $this->_DB->prepare("SELECT * FROM emailtype");
-
-        if ($stmt->execute() && $stmt->rowCount() > 0) {
-            
-           $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-           echo "<table border='1'>";
-           echo "<tr><th>Email ID</th><th>Email Type</th><th>IsActive</th><th>Delete Entry</th></tr>";
+        $emailTypes = $this->_EmailTypeDAO->getAllRows();
+        
+           if ( count($emailTypes) < 0 ) {
+            echo '<p>No Data</p>';
+        } else {
            
-            foreach ($results as $value) {
+           echo "<table border='1'>";
+           echo "<tr><th>Email ID</th><th>Email Type</th><th>IsActive</th><th>Update Entry</th><th>Delete Entry</th></tr>";
+           
+            foreach ($emailTypes as $value) {
                  
-                echo "<tr><td>", $value['emailtype'], "</td>", 
-                     "<td>", $value['emailtypeid'], "</td>",
-                     "<td>", $value['active'], "</td>",
-                     "<td> <a href='?deleteid=",$value['emailtypeid'], "'> Delete</a></td></tr>";
+                echo "<tr><td>", $value->getEmailtypeid(), "</td>", 
+                     "<td>", $value->getEmailtype(), "</td>",
+                     "<td>", ( $value->getActive() == 1 ? 'Yes' : 'No'), "</td>",
+                     "<td> <a href=EmailTypeUpdate.php?emailtypeid=",$value->getEmailtypeid(),"'>Update</a></td>",
+                     "<td> <a href=EmailTypeDelete.php?emailtypeid=",$value->getEmailtypeid(),"'>Delete</a></td>, ",
+                     "</tr>";
             }
             echo "</table>";    
         } 
-        else {
-            
-            echo '<p>No Data</p>';
-        }
         
     }
     

@@ -5,9 +5,9 @@
         
     </head>
     <body>
-        <a href="week1/lab/index.php">Week 1 Lab</a> <br /><br /> 
-        
-        <a href="week2/lab/index.php">Week 2 Lab</a> <br /><br /> 
+        <a href="email-test.php">Email page</a><br /><br /> 
+        <a href="addEmailType.php">Email Type Page</a><br /><br /> 
+        <a href="emailtype-test-service.php">Edit/Update/Delete Email Type</a><br /><br /> 
         <?php
         // put your code here
         

@@ -33,16 +33,7 @@
         $emailTypeService = new EmailTypeService($db, $util, $validator, $emailTypeDAO, $emailtypeModel);
         
         $emailTypeService->saveForm();
-        
-        if (count($_GET )) {
-            $id = $_GET['deleteid'];
-            
-            
-            $delete = $db->prepare('delete from addressbook where id ='. $id);
-            $delete->execute();
-            echo "Entry deleted";
-            header("Location: itemg.php");
-        }
+    
         ?>
         
         <h3>Add email type</h3>
@@ -59,6 +50,6 @@
         <?php         
              $emailTypeService->displayEmails();
          ?>
-         
+          <a href="index.php">Home page</a><br /><br /> 
     </body>
 </html>

@@ -93,14 +93,16 @@
            // var_dump($phoneTypes);
             
             /*
-             foreach ($phoneTypes as $value) {
-                    echo '<p>',$value['phonetype'],'</p>';
-                }
+             * 
+             * Why do this here when you can create a service class to do this for you
+             
             
             if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
                 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                
+                foreach ($phoneTypes as $value) {
+                    echo '<p>',$value['phonetype'],'</p>';
+                }
 
             } else {
                 echo '<p>No Data</p>';

@@ -31,11 +31,7 @@ class EmailTypeModel implements IModel {
     }
 
     function setEmailtypeid($emailtypeid) {
-        if (is_integer($emailtypeid) ) {
-            $this->emailtypeid = $emailtypeid;
-        } else {
-            
-        }
+            $this->emailtypeid = $emailtypeid;   
     }
 
     function setEmailtype($emailtype) {
@@ -59,12 +55,12 @@ class EmailTypeModel implements IModel {
     
     public function map(Array $values) {
         
-        if ( array_key_exists('Emailtypeid', $values) ) {
-            $this->setEmailtypeid($values['Emailtypeid']);
+        if ( array_key_exists('emailtypeid', $values) ) {
+            $this->setEmailtypeid($values['emailtypeid']);
         }
         
-        if ( array_key_exists('Emailtype', $values) ) {
-            $this->setEmailtype($values['Emailtype']);
+        if ( array_key_exists('emailtype', $values) ) {
+            $this->setEmailtype($values['emailtype']);
         }
         
         if ( array_key_exists('active', $values) ) {

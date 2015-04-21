@@ -7,26 +7,26 @@
  */
 
 /**
- * Description of EmailTypeService
+ * Description of PhoneTypeService
  *
- * @Korey Heron
+ * @author User
  */
-class EmailTypeService {
+class PhoneTypeService {
    
     private $_errors = array();
     private $_Util;
     private $_DB;
     private $_Validator;
-    private $_EmailTypeDAO;
-    private $_EmailTypeModel;
+    private $_PhoneTypeDAO;
+    private $_PhonetypeModel;
 
 
-    public function __construct($db, $util, $validator, $emailTypeDAO, $emailtypeModel) {
+    public function __construct($db, $util, $validator, $phoneTypeDAO, $phonetypeModel) {
         $this->_DB = $db;    
         $this->_Util = $util;
         $this->_Validator = $validator;
-        $this->_EmailTypeDAO = $emailTypeDAO;
-        $this->_EmailTypeModel = $emailtypeModel;
+        $this->_PhoneTypeDAO = $phoneTypeDAO;
+        $this->_PhoneTypeModel = $phonetypeModel;
     }
 
 
@@ -41,10 +41,10 @@ class EmailTypeService {
             $this->displayErrors();
         } else {
             
-            if (  $this->_EmailTypeDAO->save($this->_EmailTypeModel) ) {
-                echo 'Email Added';
+            if (  $this->_PhoneTypeDAO->save($this->_PhoneTypeModel) ) {
+                echo 'Phone Added/updated';
             } else {
-                echo 'Email could not be added Added';
+                echo 'Phone could not be added Added';
             }
            
         }
@@ -54,10 +54,10 @@ class EmailTypeService {
        
         if ( $this->_Util->isPostRequest() ) {                
             $this->_errors = array();
-            if( !$this->_Validator->emailTypeIsValid($this->_EmailTypeModel->getEmailtype()) ) {
-                 $this->_errors[] = 'Email Type is invalid';
+            if( !$this->_Validator->phoneTypeIsValid($this->_PhoneTypeModel->getPhonetype()) ) {
+                 $this->_errors[] = 'Phone Type is invalid';
             } 
-            if( !$this->_Validator->activeIsValid($this->_EmailTypeModel->getActive()) ) {
+            if( !$this->_Validator->activeIsValid($this->_PhoneTypeModel->getActive()) ) {
                  $this->_errors[] = 'Active is invalid';
             } 
         }
@@ -78,16 +78,16 @@ class EmailTypeService {
     }
 
 
-    public function displayEmails() {        
-       
-        $stmt = $this->_DB->prepare("SELECT * FROM emailtype");
+    public function displayPhones() {        
+       // this doesn't make good use of the getallrows function in my DAO
+        $stmt = $this->_DB->prepare("SELECT * FROM phonetype");
 
         if ($stmt->execute() && $stmt->rowCount() > 0) {
             
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
            
             foreach ($results as $value) {
-                echo '<p>', $value['emailtype'], '</p>';
+                echo '<p>', $value['phonetype'], '</p>';
             }
         } else {
             echo '<p>No Data</p>';
@@ -95,5 +95,29 @@ class EmailTypeService {
         
     }
     
-    
+    public function displayPhonesActions() {        
+       // Notice in the previous function I should have called get all rows
+        
+        $phoneTypes = $this->_PhoneTypeDAO->getAllRows();
+        
+        if ( count($phoneTypes) < 0 ) {
+            echo '<p>No Data</p>';
+        } else {
+            
+            
+             echo '<table border="1" cellpadding="5"><tr><th>Phone Type</th><th>Active</th><th></th><th></th></tr>';
+             foreach ($phoneTypes as $value) {
+                echo '<tr>';
+                echo '<td>', $value->getPhonetype(),'</td>';
+                echo '<td>', ($value->getActive() == 1 ? 'Yes' : 'No') ,'</td>';
+                echo '<td><a href=update.php?phonetypeid=',$value->getPhonetypeid(),'>Update</a></td>';
+                echo '<td><a href=delete.php?phonetypeid=',$value->getPhonetypeid(),'>Delete</a></td>';
+                echo '</tr>' ;
+            }
+            echo '</table>';
+            
+        }
+ 
+    }
+
 }
