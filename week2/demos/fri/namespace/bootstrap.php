@@ -1,7 +1,7 @@
 <?php
 
 function load_lib($base) {
-    
+    var_dump($base);
     $baseName = explode( '\\', $base );
     $class = end( $baseName ); 
      

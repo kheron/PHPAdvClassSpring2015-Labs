@@ -1,5 +1,6 @@
 <?php 
 namespace week2\gforti;
+
 include './bootstrap.php'; ?>
 <!DOCTYPE html>
 <html>
@@ -10,8 +11,7 @@ include './bootstrap.php'; ?>
     <body>
         <?php
         
-            
-            
+                        
             $util = new Util();            
             $scope = new Scope();
         

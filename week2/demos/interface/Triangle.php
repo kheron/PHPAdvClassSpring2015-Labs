@@ -4,7 +4,7 @@
  *
  * @author GFORTI
  */
-class Triangle  implements IShapes{
+class Triangle implements IShapes{
     
     
     public function width() {

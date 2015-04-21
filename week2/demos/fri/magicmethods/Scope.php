@@ -14,7 +14,7 @@ use Exception;
 
 class Scope {
    private $data = array();
-
+      
    public function __construct(){
     $this->data = array();
     }

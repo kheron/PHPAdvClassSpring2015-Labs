@@ -19,16 +19,16 @@
        
         $util = new Util();
         $validator = new Validator();
-        $emailTypeDAO = new EmailTypeDAO($db);
-        $emailtypeModel = new EmailTypeModel();
+        $phoneTypeDAO = new PhoneTypeDAO($db);
+        $phonetypeModel = new PhoneTypeModel();
          
         if ( $util->isPostRequest() ) {
             
-            $emailtypeModel->map(filter_input_array(INPUT_POST));
+            $phonetypeModel->map(filter_input_array(INPUT_POST));
                        
         } else {
-            $emailtypeid = filter_input(INPUT_GET, 'emailtypeid');
-            $emailtypeModel = $emailTypeDAO->getById($emailtypeid);
+            $phonetypeid = filter_input(INPUT_GET, 'phonetypeid');
+            $phonetypeModel = $phoneTypeDAO->getById($phonetypeid);
         }
         
         
@@ -37,21 +37,21 @@
         $active = $phonetypeModel->getActive();  
               
         
-        $emailTypeService = new EmailTypeService($db, $util, $validator, $emailTypeDAO, $emailtypeModel);
+        $phoneTypeService = new PhoneTypeService($db, $util, $validator, $phoneTypeDAO, $phonetypeModel);
         
-        if ( $emailTypeDAO->idExisit($emailtypeModel->getEmailtypeid()) ) {
-            $emailTypeService->saveForm();
+        if ( $phoneTypeDAO->idExisit($phonetypeModel->getPhonetypeid()) ) {
+            $phoneTypeService->saveForm();
         }
         
         
         ?>
         
         
-         <h3>UPDATE email type</h3>
+         <h3>UPDATE phone type</h3>
         <form action="#" method="post">
-             <input type="hidden" name="emailtypeid" value="<?php echo $emailtypeid; ?>" />
-            <label>Email Type:</label> 
-            <input type="text" name="emailtype" value="<?php echo $emailType; ?>" placeholder="" />
+             <input type="hidden" name="phonetypeid" value="<?php echo $phonetypeid; ?>" />
+            <label>Phone Type:</label> 
+            <input type="text" name="phonetype" value="<?php echo $phoneType; ?>" placeholder="" />
             <br /><br />
             <label>Active:</label>
             <input type="number" max="1" min="0" name="active" value="<?php echo $active; ?>" />
@@ -61,7 +61,8 @@
          
          
          <?php         
-             $emailTypeService->displayEmails();                        
+             $phoneTypeService->displayPhonesActions();
+                          
          ?>
                   
     </body>

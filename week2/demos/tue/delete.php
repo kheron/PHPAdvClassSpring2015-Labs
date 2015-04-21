@@ -18,13 +18,13 @@
             $db = $pdo->getDB();
                               
             // get values from URL
-            $emailtypeid = filter_input(INPUT_GET, 'emailtypeid');
+            $phonetypeid = filter_input(INPUT_GET, 'phonetypeid');
             
-            if ( NULL !== $emailtypeid ) {
-               $emailTypeDAO = new PhoneTypeDAO($db);
+            if ( NULL !== $phonetypeid ) {
+               $phoneTypeDAO = new PhoneTypeDAO($db);
                
-               if ( $emailTypeDAO->delete($emailtypeid) ) {
-                   echo 'Email Type was deleted';                  
+               if ( $phoneTypeDAO->delete($phonetypeid) ) {
+                   echo 'Phone Type was deleted';                  
                }                
         
             }
