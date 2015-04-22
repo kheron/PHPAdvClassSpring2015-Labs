@@ -1,4 +1,4 @@
-<?php
+<?php namespace week2\kheron;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -9,8 +9,11 @@
 /**
  * Description of EmailTypeService
  *
- * @author User
+ * @author Korey Heron
  */
+
+
+
 class EmailTypeService {
    
     private $_errors = array();

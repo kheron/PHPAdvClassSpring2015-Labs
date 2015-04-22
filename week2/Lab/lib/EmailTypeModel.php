@@ -1,4 +1,4 @@
-<?php
+<?php namespace week2\kheron;
 
 /**
  * Description of PhotoTypeModel
@@ -12,6 +12,8 @@
  *
  * @author Korey Heron
  */
+
+
 class EmailTypeModel implements IModel {
     
     private $emailtypeid;

@@ -1,4 +1,5 @@
-<?php include './bootstrap.php'; ?>
+<?php namespace week2\kheron;?>
+<?php include './bootstrap.php';?>
 <!DOCTYPE html>
 <html>
     <head>

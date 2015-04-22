@@ -1,4 +1,5 @@
-<?php
+<?php namespace week2\kheron;
+USE PDO;
 /**
  * Description of EmailTypeDAO
  * 
@@ -12,6 +13,9 @@
  *
  * @author Korey Heron
  */
+
+
+
 class EmailTypeDAO implements IDAO {
     
     private $DB = null;

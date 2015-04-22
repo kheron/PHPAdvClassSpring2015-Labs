@@ -1,4 +1,4 @@
-<?php
+<?php namespace week2\kheron;
 /**
  * EmailModel
  * 
@@ -11,6 +11,7 @@
  *
  * @author User
  */
+
 class EmailModel implements IModel {
     
     private $emailid;
