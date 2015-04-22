@@ -19,37 +19,39 @@
        
         $util = new Util();
         $validator = new Validator();
-        $emailTypeDAO = new EmailTypeDAO($db);
-        $emailtypeModel = new EmailTypeModel();
+        $emailDAO = new EmailDAO($db);
+        $emailModel = new EmailModel();
          
         if ( $util->isPostRequest() ) {
             
-            $emailtypeModel->map(filter_input_array(INPUT_POST));
+            $emailModel->map(filter_input_array(INPUT_POST));
                        
         } else {
-            $emailtypeid = filter_input(INPUT_GET, 'emailtypeid');
-            $emailtypeModel = $emailTypeDAO->getById($emailtypeid);
+            $emailid = filter_input(INPUT_GET, 'emailid');
+            $emailModel = $emailDAO->getById($emailid);
         }
         
-        
-        $emailtypeid = $emailtypeModel->getEmailtypeid();
-        $emailType = $emailtypeModel->getEmailtype();
-        $active = $emailtypeModel->getActive();  
+        $emailid = $emailModel->getEmailid();
+        $email = $emailModel->getEmail();
+        $active = $emailModel->getActive();  
+        $emailType = $emailModel->getEmailtype();
+        $emailTypeid = $emailModel->getEmailtypeid();
               
         
-        $emailTypeService = new EmailTypeService($db, $util, $validator, $emailTypeDAO, $emailtypeModel);
+        $emailService = new EmailService($db, $util, $validator, $emailDAO, $emailModel);
         
-        if ( $emailTypeDAO->idExisit($emailtypeModel->getEmailtypeid()) ) {
-            $emailTypeService->saveForm();
-        }
-        
-        
+        $emailService->saveForm();
+
         ?>
         
         
          <h3>UPDATE email type</h3>
         <form action="#" method="post">
-             <input type="hidden" name="emailtypeid" value="<?php echo $emailtypeid; ?>" />
+            <label>Email:</label>            
+            <input type="text" name="email" value="<?php echo $email; ?>" placeholder="" />
+            <br /><br />
+            <input type="hidden" name="emailid" value="<?php echo $emailid; ?>" />
+            <input type="hidden" name="emailtypeid" value="<?php echo $emailTypeid; ?>" />
             <label>Email Type:</label> 
             <input type="text" name="emailtype" value="<?php echo $emailType; ?>" placeholder="" />
             <br /><br />
@@ -61,7 +63,7 @@
          
          
          <?php         
-             $emailTypeService->displayEmails();                        
+             $emailService->displayEmails();                        
          ?>
           <a href="index.php">Home page</a><br /><br /> 
     </body>

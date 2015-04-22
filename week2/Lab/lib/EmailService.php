@@ -11,22 +11,22 @@
  *
  * @author User
  */
-class EmailTypeService {
+class EmailService {
    
     private $_errors = array();
     private $_Util;
     private $_DB;
     private $_Validator;
-    private $_EmailTypeDAO;
-    private $_EmailTypeModel;
+    private $_EmailDAO;
+    private $_EmailModel;
 
 
-    public function __construct($db, $util, $validator, $emailTypeDAO, $emailtypeModel) {
+    public function __construct($db, $util, $validator, $emailDAO, $emailModel) {
         $this->_DB = $db;    
         $this->_Util = $util;
         $this->_Validator = $validator;
-        $this->_EmailTypeDAO = $emailTypeDAO;
-        $this->_EmailTypeModel = $emailtypeModel;
+        $this->_EmailDAO = $emailDAO;
+        $this->_EmailModel = $emailModel;
     }
 
 
@@ -41,7 +41,7 @@ class EmailTypeService {
             $this->displayErrors();
         } else {
             
-            if (  $this->_EmailTypeDAO->save($this->_EmailTypeModel) ) {
+            if (  $this->_EmailDAO->save($this->_EmailModel) ) {
                 echo 'Email Added/Updated';
             } else {
                 echo 'Email could not be added Added';
@@ -54,10 +54,10 @@ class EmailTypeService {
        
         if ( $this->_Util->isPostRequest() ) {                
             $this->_errors = array();
-            if( !$this->_Validator->emailTypeIsValid($this->_EmailTypeModel->getEmailtype()) ) {
-                 $this->_errors[] = 'Email Type is invalid';
+            if( !$this->_Validator->emailIsValid($this->_EmailModel->getEmail()) ) {
+                 $this->_errors[] = 'Email is invalid';
             } 
-            if( !$this->_Validator->activeIsValid($this->_EmailTypeModel->getActive()) ) {
+            if( !$this->_Validator->activeIsValid($this->_EmailModel->getActive()) ) {
                  $this->_errors[] = 'Active is invalid';
             } 
         }
@@ -81,27 +81,27 @@ class EmailTypeService {
 
     public function displayEmails() {        
        
-        $emailTypes = $this->_EmailTypeDAO->getAllRows();
+        $emails = $this->_EmailDAO->getAllRows();
         
-           if ( count($emailTypes) < 0 ) {
+           if ( count($emails) < 0 ) {
             echo '<p>No Data</p>';
         } else {
            
            echo "<table border='1'>";
-           echo "<tr><th>Email ID</th><th>Email Type</th><th>IsActive</th><th>Update Entry</th><th>Delete Entry</th></tr>";
+           echo "<tr><th>Email</th><th>Email Type</th><th>Last updated</th>"
+           . "<th>Logged</th><th>Active</th><th>Update Entry</th><th>Delete Entry</th></tr>";
            
-            foreach ($emailTypes as $value) {
-                 
-                echo "<tr><td>", $value->getEmailtypeid(), "</td>", 
-                     "<td>", $value->getEmailtype(), "</td>",
-                     "<td>", ( $value->getActive() == 1 ? 'Yes' : 'No'), "</td>",
-                     "<td> <a href=EmailTypeUpdate.php?emailtypeid=",$value->getEmailtypeid(),"'>Update</a></td>",
-                     "<td> <a href=Delete.php?emailtypeid=",$value->getEmailtypeid(),"'>Delete</a></td>, ",
-                     "</tr>";
+           
+           
+            foreach ($emails as $value) {
+                echo '<tr><td>',$value->getEmail(),'</td><td>',$value->getEmailtype(),'</td><td>',date("F j, Y g:i(s) a", strtotime($value->getLastupdated())),'</td><td>',date("F j, Y g:i(s) a", strtotime($value->getLogged())),'</td>';
+                echo  '<td>', ( $value->getActive() == 1 ? 'Yes' : 'No') ,'</td>';
+                echo  '<td><a href=EmailUpdate.php?emailid=', $value->getEmailid() , '>Update</a></td>';
+                echo  '<td><a href=Delete.php?emailid=', $value->getEmailid() , '>Delete</a></td></tr>';
             }
-            echo "</table>";    
-        } 
-        
+            }
+            echo "</table>";
+               
     }
  
 }

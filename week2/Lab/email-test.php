@@ -19,55 +19,41 @@
         
         
         $email = filter_input(INPUT_POST, 'email');
+        $emailType = filter_input(INPUT_POST, 'emailtype');
         $emailTypeid = filter_input(INPUT_POST, 'emailtypeid');
         $active = filter_input(INPUT_POST, 'active');
         
+        $util = new Util();
+        $validator = new Validator();
+        $emailDAO = new EmailDAO($db);
+        $emailTypeDAO = new EmailTypeDAO($db);
         
-         $emailTypeDAO = new EmailTypeDAO($db);
-         $emailDAO = new EmailDAO($db);
+        $emailtypeModel = new EmailTypeModel();
+        $emailtypeModel->setActive($active);
+        $emailtypeModel->setEmailtype($emailType);
          
-         $emailTypes = $emailTypeDAO->getAllRows();
+        $emailTypes = $emailTypeDAO->getAllRows();
         
-         $util = new Util();
-         
+        
           if ( $util->isPostRequest() ) {
-                            
-               $validator = new Validator(); 
-                $errors = array();
-                if( !$validator->emailIsValid($email) ) {
-                    $errors[] = 'Email is invalid';
-                } 
-                
-                if ( !$validator->activeIsValid($active) ) {
-                     $errors[] = 'Active is invalid';
-                }
-                
-                if ( empty($emailTypeid) ) {
-                     $errors[] = 'Email type is invalid';
-                }
-                
-                
-                
-                if ( count($errors) > 0 ) {
-                    foreach ($errors as $value) {
-                        echo '<p>',$value,'</p>';
-                    }
-                } else {
+
+            //var_dump($emailtypeModel);
+            if ( $emailDAO->save($emailModel) ) {
+                echo 'Email Added';
+            } else {
+                echo 'Email not added';
+            }
                     
-                    
-                    $emailModel = new EmailModel();
-                    
-                    $emailModel->map(filter_input_array(INPUT_POST));
-                    
-                    //var_dump($emailtypeModel);
-                    if ( $emailDAO->save($emailModel) ) {
-                        echo 'Email Added';
-                    } else {
-                        echo 'Email not added';
-                    }
-                    
-                }
-          }
+        }
+        
+        $emailModel = new EmailModel();
+        $emailModel->setEmail($email);
+        //$emailModel->setLogged($logged);
+       // $emailModel->setLastupdated($lastupdated);
+        $emailModel->setActive($active);
+        $emailModel->setEmailtype($emailType);
+        $emailService = new EmailService($db, $util, $validator, $emailDAO, $emailModel);    
+        $emailService->saveForm();
         
         ?>
         
@@ -76,10 +62,6 @@
         <form action="#" method="post">
             <label>Email:</label>            
             <input type="text" name="email" value="<?php echo $email; ?>" placeholder="" />
-            <br /><br />
-            <label>Active:</label>
-            <input type="number" max="1" min="0" name="active" value="<?php echo $active; ?>" />
-            
             <br /><br />
             <label>Email Type:</label>
             <select name="emailtypeid">
@@ -93,29 +75,16 @@
                 }
             ?>
             </select>
-            
-             <br /><br />
+            <br /><br />     
+            <label>Active:</label>
+            <input type="number" max="1" min="0" name="active" value="<?php echo $active; ?>" />    
+            <br /><br />
             <input type="submit" value="Submit" />
         </form>
          
-         <table border="1" cellpadding="5">
-                <tr>
-                    <th>Email</th>
-                    <th>Email Type</th>
-                    <th>Last updated</th>
-                    <th>Logged</th>
-                    <th>Active</th>
-                    <th>Update</th>
-                    <th>Delete</th>
-                </tr>
          <?php 
-            $emails = $emailDAO->getAllRows(); 
-            foreach ($emails as $value) {
-                echo '<tr><td>',$value->getEmail(),'</td><td>',$value->getEmailtype(),'</td><td>',date("F j, Y g:i(s) a", strtotime($value->getLastupdated())),'</td><td>',date("F j, Y g:i(s) a", strtotime($value->getLogged())),'</td>';
-                echo  '<td>', ( $value->getActive() == 1 ? 'Yes' : 'No') ,'</td>';
-                echo  '<td><a href=EmailUpdate.php?emailid=', $value->getEmailid() , '>Update</a></td>';
-                echo  '<td><a href=EmailDelete.php?emailid=', $value->getEmailid() , '>Delete</a></td></tr>';
-            }
+            
+         $emailService->displayEmails();
 
          ?>
          </table>         

@@ -19,12 +19,28 @@
                               
             // get values from URL
             $emailtypeid = filter_input(INPUT_GET, 'emailtypeid');
+            $emailid = filter_input(INPUT_GET, 'emailid');
+            
+            
             
             if ( NULL !== $emailtypeid ) {
                $emailTypeDAO = new EmailTypeDAO($db);
                
                if ( $emailTypeDAO->delete($emailtypeid) ) {
                    echo 'Email Type was deleted';                  
+               }
+               else
+               {
+                   echo 'Unable to delete email.';
+               }
+        
+            }
+            
+            if ( NULL !== $emailid ) {
+               $emailDAO = new EmailDAO($db);
+               
+               if ( $emailDAO->delete($emailid) ) {
+                   echo 'Email ID was deleted';                  
                }
                else
                {
