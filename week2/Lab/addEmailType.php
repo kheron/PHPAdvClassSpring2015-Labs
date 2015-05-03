@@ -1,7 +1,6 @@
-<?php namespace week2\kheron;?>
-<?php include './bootstrap.php'; 
-
-?>
+<?php namespace week2\kheron; 
+use PDO?>
+<?php include './bootstrap.php'; ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -50,9 +49,7 @@ if ( count($errors) > 0 ) {
     if ( $stmt->execute($values) && $stmt->rowCount() > 0 ) {
         echo 'Email Added';
     }       
-    
-    
-    
+ 
 }
 
         ?>

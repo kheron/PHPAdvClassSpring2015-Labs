@@ -1,5 +1,5 @@
 <?php namespace week2\kheron;
-USE PDO;
+use PDO;
 /**
  * Description of EmailTypeDAO
  * 
