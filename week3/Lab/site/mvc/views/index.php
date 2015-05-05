@@ -5,7 +5,6 @@
         <title></title>
     </head>
     <body>
-        cool
         <?php
         // put your code here
         

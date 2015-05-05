@@ -10,7 +10,7 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        
+        <a href="index">Home</a>
         <?php
         // put your code here
         

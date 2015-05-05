@@ -5,9 +5,10 @@
         <title></title>
     </head>
     <body>
+        <a href="index">Home</a>
         <?php
         // put your code here
-                
+         
          if ( $scope->util->isPostRequest() ) {
              
              if ( isset($scope->view['errors']) ) {
@@ -27,6 +28,7 @@
             $email = $scope->view['model']->getEmail();
             $active = $scope->view['model']->getActive();
             $emailTypeid = $scope->view['model']->getEmailtypeid();
+            
         ?>
         
         <h3>Add email</h3>
@@ -86,6 +88,7 @@
            
 
          ?>
+         
             
     </body>
 </html>
