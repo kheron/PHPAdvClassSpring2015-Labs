@@ -3,36 +3,36 @@
 /**
  * Description of PhotoTypeModel
  *
- * @author User
+ * @author KHERON
  */
 
 namespace App\models\services;
 
 
-class PhoneTypeModel extends BaseModel {
+class EmailTypeModel extends BaseModel {
     
-    private $phonetypeid;
-    private $phonetype;
+    private $emailtypeid;
+    private $emailtype;
     private $active;
     
-    function getPhonetypeid() {
-        return $this->phonetypeid;
+    function getEmailtypeid() {
+        return $this->emailtypeid;
     }
 
-    function getPhonetype() {
-        return $this->phonetype;
+    function getEmailtype() {
+        return $this->emailtype;
     }
 
     function getActive() {
         return $this->active;
     }
 
-    function setPhonetypeid($phonetypeid) {
-        $this->phonetypeid = $phonetypeid;
+    function setEmailtypeid($emailtypeid) {
+        $this->emailtypeid = $emailtypeid;
     }
 
-    function setPhonetype($phonetype) {
-        $this->phonetype = $phonetype;
+    function setEmailtype($emailtype) {
+        $this->emailtype = $emailtype;
     }
 
     function setActive($active) {

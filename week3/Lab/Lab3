@@ -1,0 +1,10 @@
+Lets use our MVC framework to develop a site for our email Application. Please remember to remove any debugging code before submitting. 
+
+Using the Data we will want to perform crud operations on the site. (Same as last Lab)
+Use the Models and DAO's to access the data with services.  Add other services you might need for the site.
+Create a controller for each view page.
+All Classes must be documented with proper comments.
+Have links that allow me to visit the other pages.
+ By the end, I should be able to perform crud with email types and emails.  Be sure to include links to the other pages
+
+Make sure to follow MVC standards.  Keep your controllers light, your models Heavy and your view page just to display data.

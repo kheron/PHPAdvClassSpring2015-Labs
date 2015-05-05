@@ -3,7 +3,7 @@
 /**
  * Description of Validator
  *
- * @author GForti
+ * @author KHERON
  */
 
 namespace App\models\services;
@@ -43,7 +43,7 @@ class Validator implements IService {
      *
      * @return boolean
      */
-    public function phoneTypeIsValid($type) {
+    public function emailTypeIsValid($type) {
         return ( is_string($type) && preg_match("/^[a-zA-Z]+$/", $type) );
     }
     

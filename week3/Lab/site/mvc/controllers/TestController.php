@@ -3,7 +3,7 @@
 /**
  * Description of TestController
  *
- * @author GFORTI
+ * @author KHERON
  */
 
 namespace APP\controller;

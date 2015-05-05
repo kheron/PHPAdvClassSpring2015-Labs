@@ -1,43 +1,43 @@
 <?php
 
 /**
- * Description of PhoneModel
+ * Description of EmailModel
  *
- * @author GFORTI
+ * @author KHERON
  */
 
 namespace App\models\services;
 
 
-class PhoneModel extends BaseModel {
+class EmailModel extends BaseModel {
     
-    private $phoneid;
-    private $phone;
-    private $phonetypeid;
-    private $phonetype;
-    private $phonetypeactive;
+    private $emailid;
+    private $email;
+    private $emailtypeid;
+    private $emailtype;
+    private $emailtypeactive;
     private $logged;
     private $lastupdated;
     private $active;
     
-    function getPhoneid() {
-        return $this->phoneid;
+    function getEmailid() {
+        return $this->emailid;
     }
 
-    function getPhone() {
-        return $this->phone;
+    function getEmail() {
+        return $this->email;
     }
 
-    function getPhonetypeid() {
-        return $this->phonetypeid;
+    function getEmailtypeid() {
+        return $this->emailtypeid;
     }
     
-     function getPhonetype() {
-        return $this->phonetype;
+     function getEmailtype() {
+        return $this->emailtype;
     }
 
-    function getPhonetypeactive() {
-        return $this->phonetypeactive;
+    function getEmailtypeactive() {
+        return $this->emailtypeactive;
     }
 
     function getLogged() {
@@ -52,24 +52,24 @@ class PhoneModel extends BaseModel {
         return $this->active;
     }
 
-    function setPhoneid($phoneid) {
-        $this->phoneid = $phoneid;
+    function setEmailid($emailid) {
+        $this->emailid = $emailid;
     }
 
-    function setPhone($phone) {
-        $this->phone = $phone;
+    function setEmail($email) {
+        $this->email = $email;
     }
 
-    function setPhonetypeid($phonetypeid) {
-        $this->phonetypeid = $phonetypeid;
+    function setEmailtypeid($emailtypeid) {
+        $this->emailtypeid = $emailtypeid;
     }
 
-    function setPhonetype($phonetype) {
-        $this->phonetype = $phonetype;
+    function setEmailtype($emailtype) {
+        $this->emailtype = $emailtype;
     }
 
-    function setPhonetypeactive($phonetypeactive) {
-        $this->phonetypeactive = $phonetypeactive;
+    function setEmailtypeactive($emailtypeactive) {
+        $this->emailtypeactive = $emailtypeactive;
     }
     
     function setLogged($logged) {

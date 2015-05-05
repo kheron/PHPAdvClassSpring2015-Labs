@@ -9,7 +9,7 @@
 /**
  * Description of Scope
  *
- * @author GForti
+ * @author KHERON
  */
 namespace App\models\services;
 

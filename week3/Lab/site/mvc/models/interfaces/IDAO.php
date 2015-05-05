@@ -9,7 +9,7 @@
 /**
  * Description of IDAO
  *
- * @author User
+ * @author Kheron
  */
 namespace App\models\interfaces;
 

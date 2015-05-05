@@ -9,7 +9,7 @@
 /**
  * Description of IModel
  *
- * @author User
+ * @author KHERON
  */
 namespace App\models\interfaces;
 

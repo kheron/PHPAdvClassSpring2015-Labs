@@ -1,8 +1,8 @@
 <?php
 /**
- * Description of PhoneController
+ * Description of EmailController
  *
- * @author GFORTI
+ * @author KHERON
  */
 
 namespace APP\controller;
@@ -10,18 +10,18 @@ namespace APP\controller;
 use App\models\interfaces\IController;
 use App\models\interfaces\IService;
 
-class PhoneController extends BaseController implements IController {
+class EmailController extends BaseController implements IController {
    
     protected $service;
     
-    public function __construct( IService $PhoneService  ) {                
-        $this->service = $PhoneService;  
+    public function __construct( IService $EmailService  ) {                
+        $this->service = $EmailService;  
     }
     
     public function execute(IService $scope) {
-        $viewPage = 'phone';
+        $viewPage = 'email';
         
-        $this->data['model'] = $this->service->getNewPhoneModel();
+        $this->data['model'] = $this->service->getNewEmailModel();
         $this->data['model']->reset();
         
         if ( $scope->util->isPostRequest() ) {
@@ -35,12 +35,12 @@ class PhoneController extends BaseController implements IController {
             
             if ( $scope->util->getAction() == 'edit' ) {
                 $viewPage .= 'edit';
-                $this->data['model'] = $this->service->read($scope->util->getPostParam('phoneid'));
+                $this->data['model'] = $this->service->read($scope->util->getPostParam('emailid'));
                   
             }
             
             if ( $scope->util->getAction() == 'delete' ) {                
-                $this->data["deleted"] = $this->service->delete($scope->util->getPostParam('phoneid'));
+                $this->data["deleted"] = $this->service->delete($scope->util->getPostParam('emailid'));
             }
             
              if ( $scope->util->getAction() == 'update'  ) {
@@ -54,8 +54,8 @@ class PhoneController extends BaseController implements IController {
         }
         
         
-        $this->data['phoneTypes'] = $this->service->getAllPhoneTypes(); 
-        $this->data['phones'] = $this->service->getAllPhones(); 
+        $this->data['emailTypes'] = $this->service->getAllEmailTypes(); 
+        $this->data['emails'] = $this->service->getAllEmails(); 
         
         $scope->view = $this->data;
         return $this->view($viewPage,$scope);

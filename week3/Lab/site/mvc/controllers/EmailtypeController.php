@@ -7,9 +7,9 @@
  */
 
 /**
- * Description of PhonetypeController
+ * Description of EmailtypeController
  *
- * @author User
+ * @author KHERON
  */
 
 namespace APP\controller;
@@ -17,19 +17,19 @@ namespace APP\controller;
 use App\models\interfaces\IController;
 use App\models\interfaces\IService;
 
-class PhonetypeController extends BaseController implements IController {
+class EmailtypeController extends BaseController implements IController {
        
-    public function __construct( IService $PhoneTypeService ) {                
-        $this->service = $PhoneTypeService;     
+    public function __construct( IService $EmailTypeService ) {                
+        $this->service = $EmailTypeService;     
         
     }
 
 
     public function execute(IService $scope) {
                 
-        $this->data['model'] = $this->service->getNewPhoneTypeModel();
+        $this->data['model'] = $this->service->getNewEmailTypeModel();
         $this->data['model']->reset();
-        $viewPage = 'phonetype';
+        $viewPage = 'emailtype';
         
         
         if ( $scope->util->isPostRequest() ) {
@@ -49,19 +49,19 @@ class PhonetypeController extends BaseController implements IController {
             
             if ( $scope->util->getAction() == 'edit' ) {
                 $viewPage .= 'edit';
-                $this->data['model'] = $this->service->read($scope->util->getPostParam('phonetypeid'));
+                $this->data['model'] = $this->service->read($scope->util->getPostParam('emailtypeid'));
                   
             }
             
             if ( $scope->util->getAction() == 'delete' ) {                
-                $this->data["deleted"] = $this->service->delete($scope->util->getPostParam('phonetypeid'));
+                $this->data["deleted"] = $this->service->delete($scope->util->getPostParam('emailtypeid'));
             }
                        
         }
         
         
        
-        $this->data['PhoneTypes'] = $this->service->getAllRows();        
+        $this->data['EmailTypes'] = $this->service->getAllRows();        
         
         
         $scope->view = $this->data;

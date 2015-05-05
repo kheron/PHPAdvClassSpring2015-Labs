@@ -2,7 +2,7 @@
 /**
  * Description of ScopeVariableNotFoundException
  *
- * @author GFORTI
+ * @author Kheron
  */
 namespace App\models\services;
 
