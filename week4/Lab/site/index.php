@@ -191,7 +191,9 @@ use Exception;
                 
         $_emailTypeService = new EmailTypeService($_emailTypeDAO, $_validator, $_emailTypemodel );
         
-        $_emailtypeservice = new EmailtypeService();
+        $_email = new EmailModel($_emailTypeDAO, $_validator, $_emailTypemodel);
+        
+        //$_emailtypeservice = new EmailtypeService();
         
         //http://php.net/manual/en/functions.anonymous.php
 
@@ -201,8 +203,9 @@ use Exception;
         ->addDIController('emailtype', function() use ($_emailTypeService ) { 
             return new \APP\controller\EmailtypeController($_emailTypeService);
         })
-        ->addDIController('emailtype', function() use ($_emailtypeservice ) { 
-            return new \APP\controller\EmailtypeController($_emailtypeservice);
+        
+        ->addDIController('email', function() use ($_email ) { 
+            return new \APP\controller\EmailController($_email);
         })
         
         ;

@@ -9,17 +9,17 @@ var myApp = angular.module('myApp', [
 
 myApp.constant('config', {
     "endpoints": {
-       "phones" : 'http://localhost/PHPadvClassSpring2015-Labs/week5/demo/api/v1/phones/',
-       "phonetypes" : 'http://localhost/PHPadvClassSpring2015-Labs/week5/demo/api/v1/phonetypes/'
+       "emails" : 'http://localhost/PHPadvClassSpring2015-Labs/week5/lab/api/v1/emails/',
+       "emailtypes" : 'http://localhost/PHPadvClassSpring2015-Labs/week5/lab/api/v1/emailtypes/'
     },
     "models" : {
-        "phonetype" : {
-            "phonetype" : '',
+        "emailtype" : {
+            "emailtype" : '',
             "active" : ''
         },
-        "phone" : {
-            "phone" : '',
-            "phonetypeid" : '',
+        "email" : {
+            "email" : '',
+            "emailtypeid" : '',
             "active" : ''
         }   
     }
@@ -31,12 +31,12 @@ myApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
         when('/', {
-            templateUrl: 'partials/phonetypes.html',
-            controller: 'PhoneTypesCtrl'
+            templateUrl: 'partials/emailtypes.html',
+            controller: 'EmailTypesCtrl'
         }).
-        when('/phones', {
-            templateUrl: 'partials/phones.html',
-            controller: 'PhonesCtrl'
+        when('/emails', {
+            templateUrl: 'partials/emails.html',
+            controller: 'EmailsCtrl'
         }).
         otherwise({
           redirectTo: '/'

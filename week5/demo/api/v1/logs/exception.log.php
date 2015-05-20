@@ -13,3 +13,18 @@
 [5540078a84be0]	[exception]	[04-29-2015 12:19am]	Invalid credentials
 [55400ce778084]	[exception]	[04-29-2015 12:42am]	New Phone Type Not Created
 [55400f32794d4]	[exception]	[04-29-2015 12:52am]	Invalid credentials
+[555bdf30bcddc]	[exception]	[05-20-2015 3:11am]	New Phone Type Not Created
+[555bdf8809cbd]	[exception]	[05-20-2015 3:12am]	New Phone Type Not Created
+[555bdf8958110]	[exception]	[05-20-2015 3:12am]	New Phone Type Not Created
+[555bdf9ec8a03]	[exception]	[05-20-2015 3:13am]	New Phone Type Not Created
+[555bdfa3d3a8c]	[exception]	[05-20-2015 3:13am]	New Phone Type Not Created
+[555bdfa45abde]	[exception]	[05-20-2015 3:13am]	New Phone Type Not Created
+[555bdfa48724a]	[exception]	[05-20-2015 3:13am]	New Phone Type Not Created
+[555bdfa4b3490]	[exception]	[05-20-2015 3:13am]	New Phone Type Not Created
+[555bdfa4ded59]	[exception]	[05-20-2015 3:13am]	New Phone Type Not Created
+[555bdfa71901f]	[exception]	[05-20-2015 3:13am]	New Phone Type Not Created
+[555bdfa742f63]	[exception]	[05-20-2015 3:13am]	New Phone Type Not Created
+[555bdfa76b8ac]	[exception]	[05-20-2015 3:13am]	New Phone Type Not Created
+[555bdfa78de27]	[exception]	[05-20-2015 3:13am]	New Phone Type Not Created
+[555be0119527e]	[exception]	[05-20-2015 3:14am]	New Phone Type Not Created
+[555be96937220]	[exception]	[05-20-2015 3:54am]	New Phone Type Not Created
