@@ -1,12 +1,10 @@
-<?php namespace week2\kheron;
-use PDO;
+<?php
+
 /**
  * DB is the general class to connection to our database
  *
- * @author Kheron
- * this is a test
+ * @author GForti
  */
-
 
 
 class DB {
@@ -44,10 +42,9 @@ class DB {
         try {
             $config = $this->getDbConfig();
             $this->db = new PDO($config['DB_DNS'], $config['DB_USER'], $config['DB_PASSWORD']);
-            $this->db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-        } catch (Exception $ex) {
-          
+        } catch (Exception $ex) {          
            $this->closeDB();
+           throw new DBException($ex->getMessage());
         }
         return $this->db;        
     }

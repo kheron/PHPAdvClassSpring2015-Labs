@@ -1,12 +1,10 @@
-<?php namespace week2\kheron;
-use PDO;
+ <?php
+
 /**
  * DB is the general class to connection to our database
  *
- * @author Kheron
- * this is a test
+ * @author GForti
  */
-
 
 
 class DB {
