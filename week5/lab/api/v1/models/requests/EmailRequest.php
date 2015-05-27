@@ -55,15 +55,15 @@ class EmailRequest implements IRequest {
     
     public function PUT( IModel $model ) {
         $id = intval($model->getId());
-        $emailTypeModel = $this->service->getNewEmailModel();
-        $emailTypeModel->map($model->getRequestData());
-        $emailTypeModel->setEmailtypeid($id);
+        $emailModel = $this->service->getNewEmailModel();
+        $emailModel->map($model->getRequestData());
+        $emailModel->setEmailid($id);
         
         if ( !$this->service->idExist($id) ) {
             throw new NoContentRequestException($id . ' ID does not exist');
         }
         
-        if ( $this->service->update($emailTypeModel) ) {
+        if ( $this->service->update($emailModel) ) {
             throw new ContentCreatedException('Created');           
         }
         throw new ConflictRequestException('New Email Not Updated for id ' . $id);
