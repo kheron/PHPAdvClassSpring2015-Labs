@@ -33,6 +33,7 @@ class EmailRequest implements IRequest {
     }
     
     public function GET( IModel $model ) {
+        
         $id = intval($model->getId());
         
         if ( $id > 0 ) { 

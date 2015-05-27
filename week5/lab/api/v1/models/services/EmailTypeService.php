@@ -34,7 +34,6 @@ class EmailTypeService implements IService {
          $this->model = $model;
      }
      
-     
      function getDAO() {
          return $this->DAO;
      }
@@ -100,6 +99,5 @@ class EmailTypeService implements IService {
     public function getNewEmailTypeModel() {
         return clone $this->getModel();
     }
-    
-    
+        
 }

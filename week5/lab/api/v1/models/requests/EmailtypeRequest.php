@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Description of EmailtypeController
  *
@@ -11,7 +10,6 @@ namespace API\models\services;
 use API\models\interfaces\IRequest;
 use API\models\interfaces\IService;
 use API\models\interfaces\IModel;
-
 
 class EmailtypeRequest implements IRequest {
     //put your code here

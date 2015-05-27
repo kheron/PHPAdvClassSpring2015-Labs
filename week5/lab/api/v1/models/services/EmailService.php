@@ -17,7 +17,8 @@ class EmailService implements IService {
     protected $emailTypeService;
     protected $validator;
     protected $model;
-                function getValidator() {
+    
+    function getValidator() {
         return $this->validator;
     }
 
@@ -41,7 +42,6 @@ class EmailService implements IService {
         $this->emailTypeService = $service;
     }
     
-    
     function getModel() {
         return $this->model;
     }
@@ -49,6 +49,15 @@ class EmailService implements IService {
     function setModel(IModel $model) {
         $this->model = $model;
     }
+    
+    function getDAO() {
+         return $this->emailDAO;
+     }
+
+     function setDAO(IDAO $DAO) {
+         $this->DAO = $DAO;
+     }
+     
 
         public function __construct( IDAO $emailDAO, IService $emailTypeService, IService $validator, IModel $model  ) {
         $this->setEmailDAO($emailDAO);
@@ -66,6 +75,10 @@ class EmailService implements IService {
      public function getAllRows() {       
         return $this->getEmailDAO()->getAllRows();   
         
+    }
+    
+    public function idExist($id) {
+        return $this->getDAO()->idExisit($id);
     }
     
     public function create(IModel $model) {

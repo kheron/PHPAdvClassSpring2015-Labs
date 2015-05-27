@@ -51,8 +51,7 @@ class EmailDAO extends BaseDAO implements IDAO {
          
         
     }
-    
-    
+
     public function create(IModel $model) {
                  
          $db = $this->getDB();
@@ -70,11 +69,9 @@ class EmailDAO extends BaseDAO implements IDAO {
                 return true;
              }
          }
-                  
          
          return false;
     }
-    
     
      public function update(IModel $model) {
                  
@@ -85,8 +82,7 @@ class EmailDAO extends BaseDAO implements IDAO {
                         ":emailtypeid" => $model->getEmailtypeid(),
                         ":emailid" => $model->getEmailid()
                     );
-         
-                
+  
          if ( $this->idExisit($model->getEmailid()) ) {
             
              $stmt = $db->prepare("UPDATE email SET email = :email, emailtypeid = :emailtypeid,  active = :active, lastupdated = now() WHERE emailid = :emailid");

@@ -17,7 +17,8 @@ class EmailService implements IService {
     protected $emailTypeService;
     protected $validator;
     protected $model;
-                function getValidator() {
+                
+    function getValidator() {
         return $this->validator;
     }
 

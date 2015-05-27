@@ -17,3 +17,5 @@
 [555bea815cb05]	[exception]	[05-20-2015 3:59am]	New Email Type Not Created
 [555bea9d43f3f]	[exception]	[05-20-2015 3:59am]	New Email Not Created
 [555bea9ea424d]	[exception]	[05-20-2015 3:59am]	New Email Not Created
+[5564f4c6eee91]	[exception]	[05-27-2015 12:33am]	New Email Type Not Updated for id 25
+[55650cff06624]	[exception]	[05-27-2015 2:17am]	New Email Not Updated for id 27
