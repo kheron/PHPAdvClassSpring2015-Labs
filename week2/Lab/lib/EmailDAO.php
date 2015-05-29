@@ -79,11 +79,12 @@ class EmailDAO implements IDAO {
              $stmt = $db->prepare("INSERT INTO email SET email = :email, emailtypeid = :emailtypeid, active = :active, logged = now(), lastupdated = now()");
          }
          
+         
           
          if ( $stmt->execute($values) && $stmt->rowCount() > 0 ) {
             return true;
          }
-         
+         //var_dump($values);
          return false;
     }
     

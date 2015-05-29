@@ -27,34 +27,40 @@
         $util = new Util();
         $validator = new Validator();
         $emailDAO = new EmailDAO($db);
+        
         $emailTypeDAO = new EmailTypeDAO($db);
         
-        $emailtypeModel = new EmailTypeModel();
-        $emailtypeModel->setActive($active);
-        $emailtypeModel->setEmailtype($emailType);
-         
+        //$emailtypeModel = new EmailTypeModel();
+        //$emailtypeModel->setActive($active);
+        //$emailtypeModel->setEmailtype($emailType);
         $emailTypes = $emailTypeDAO->getAllRows();
         
         
-          if ( $util->isPostRequest() ) {
-
-            //var_dump($emailtypeModel);
-            if ( $emailDAO->save($emailModel) ) {
-                echo 'Email Added';
-            } else {
-                echo 'Email not added';
-            }
-                    
-        }
+          
         
         $emailModel = new EmailModel();
         $emailModel->setEmail($email);
         //$emailModel->setLogged($logged);
        // $emailModel->setLastupdated($lastupdated);
         $emailModel->setActive($active);
-        $emailModel->setEmailtype($emailType);
+        $emailModel->setEmailtypeid($emailTypeid);
+        //$emailModel->setEmailtype($emailType);
         $emailService = new EmailService($db, $util, $validator, $emailDAO, $emailModel);    
         $emailService->saveForm();
+        
+        
+        
+        
+        if ( $util->isPostRequest() ) {
+            //var_dump($emailModel);
+            /*
+            if ( $emailDAO->save($emailModel) ) {
+                echo 'Email Added';
+            } else {
+                echo 'Email not added using this';
+            }
+                 */   
+        }
         
         ?>
         

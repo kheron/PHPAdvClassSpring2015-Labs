@@ -10,7 +10,7 @@ namespace week2\kheron;
  * 
  * In the class name we add an "I" so we know it's an interface
  * 
- * @author GForti
+ * @author KHERON
  *  
  */
 

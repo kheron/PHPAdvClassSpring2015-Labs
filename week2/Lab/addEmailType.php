@@ -84,8 +84,7 @@ if ( count($errors) > 0 ) {
         echo '<p>No Data</p>';
     }
     ?>
-         
-         
-         
+ 
+        <a href="index.php">Home page</a><br /><br /> 
     </body>
 </html>

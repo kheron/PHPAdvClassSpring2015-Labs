@@ -17,8 +17,7 @@
         
         $pdo = new DB($dbConfig);
         $db = $pdo->getDB();
-        
-        
+
         $email = filter_input(INPUT_POST, 'email');
         $emailType = filter_input(INPUT_POST, 'emailtype');
         $emailTypeid = filter_input(INPUT_POST, 'emailtypeid');
@@ -27,38 +26,24 @@
         $util = new Util();
         $validator = new Validator();
         $emailDAO = new EmailDAO($db);
+        
         $emailTypeDAO = new EmailTypeDAO($db);
-        
-        $emailtypeModel = new EmailTypeModel();
-        $emailtypeModel->setActive($active);
-        $emailtypeModel->setEmailtype($emailType);
-         
         $emailTypes = $emailTypeDAO->getAllRows();
-        
-        
-          if ( $util->isPostRequest() ) {
 
-            //var_dump($emailtypeModel);
-            if ( $emailDAO->save($emailModel) ) {
-                echo 'Email Added';
-            } else {
-                echo 'Email not added';
-            }
-                    
-        }
-        
         $emailModel = new EmailModel();
         $emailModel->setEmail($email);
-        //$emailModel->setLogged($logged);
-       // $emailModel->setLastupdated($lastupdated);
         $emailModel->setActive($active);
-        $emailModel->setEmailtype($emailType);
+        $emailModel->setEmailtypeid($emailTypeid);
+        
         $emailService = new EmailService($db, $util, $validator, $emailDAO, $emailModel);    
         $emailService->saveForm();
+
+        if ( $util->isPostRequest() ) {
+            //var_dump($emailModel);
+        }
         
         ?>
-        
-        
+
          <h3>Add email</h3>
         <form action="#" method="post">
             <label>Email:</label>            
@@ -83,10 +68,8 @@
             <input type="submit" value="Submit" />
         </form>
          
-         <?php 
-            
-         $emailService->displayEmails();
-
+         <?php            
+            $emailService->displayEmails();
          ?>
          </table>         
          <a href="index.php">Home page</a><br /><br /> 
